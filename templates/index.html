@@ -10,29 +10,32 @@
 </head>
 <body>
     <h1>A Form </h1>
-    <form action="/result" method="post">
+
+    {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+    {% if messages %}                            <!-- check if there are any messages -->
+        {% for message in messages %}            <!-- loop through the messages -->
+            <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+    {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+
+    <form action="/" method="post">
         <p>Your Name: <input type="text"
-        name="username"></p>
+        name="name"></p>
 
         <p>Dojo Location: <input type="text"
         name="location"></p>
 
         <p>Favorite Language: <input type="text"
         name="language"></p>
-        
-        <p>Comment: 
+
+        <p>Comment (Optional): 
         <textarea rows="4" cols="50" class="form-control" type="text"
-        name="comment">
-            Enter text here...</textarea>
+        name="comment"></textarea>
         </p>
-        <input type="submit">
+       <input type="submit">
     </form>
 </body>
    
  </html>
-
- <!-- <label>
-    Comments
-</label>
-<textarea class="form-control" name="comment"
-rows="3"></textarea> -->
